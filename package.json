@@ -5,7 +5,7 @@
   "homepage": "https://vasylmolnar.github.io/TourAgencyFrontend/",
   "scripts": {
     "start": "parcel public/*.html",
-    "build": "parcel build public/*.html --public-url /TourAgency/"
+    "build": "parcel build public/*.html --public-url /TourAgencyFrontend/"
   },
   "repository": {
     "type": "git",
