@@ -1,0 +1,228 @@
+.registration__modal {
+  .backdrop__registration.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .backdrop__registration {
+    visibility: visible;
+    opacity: 1;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .backdrop__registration.is-hidden .wrapper {
+    transform-origin: center;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $colorwhite;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-close {
+    fill: currentColor;
+    &:hover {
+      color: $background;
+    }
+  }
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
+    max-width: 390px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .title-text {
+    display: flex;
+    width: 200%;
+
+    .title {
+      width: 50%;
+      font-size: 35px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+  }
+
+  .form-container {
+    overflow: hidden;
+
+    .slide-controls {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      width: 100%;
+      overflow: hidden;
+      margin: 30px 0 10px 0;
+      border: 1px solid lightgrey;
+      border-radius: 15px;
+
+      .slide {
+        height: 100%;
+        width: 100%;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        line-height: 48px;
+        cursor: pointer;
+        z-index: 1;
+        transition: all 0.6s ease;
+      }
+
+      label.signup {
+        color: #000;
+      }
+
+      label.signup:visited {
+        color: rgb(255, 255, 255);
+      }
+
+      .slider-tab {
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        left: 0;
+        z-index: 0;
+        border-radius: 15px;
+        background: -webkit-linear-gradient(
+          left,
+          #003366,
+          #004080,
+          #0059b3,
+          #0073e6
+        );
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      input[type='radio'] {
+        display: none;
+      }
+
+      #signup:checked ~ .slider-tab {
+        left: 50%;
+      }
+    }
+
+    .form-inner {
+      display: flex;
+      width: 200%;
+
+      form {
+        width: 50%;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        .field {
+          height: 50px;
+          width: 100%;
+          margin-top: 20px;
+
+          input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            padding-left: 15px;
+            border-radius: 15px;
+            border: 1px solid lightgrey;
+            border-bottom-width: 2px;
+            font-size: 17px;
+            transition: all 0.3s ease;
+          }
+          input:focus::placeholder {
+            color: #1a75ff;
+          }
+          input:focus {
+            border-color: #1a75ff;
+          }
+          input::placeholder {
+            color: #999;
+            transition: all 0.3s ease;
+          }
+        }
+
+        .pass-link {
+          margin-top: 5px;
+        }
+        .signup-link {
+          text-align: center;
+          margin-top: 30px;
+        }
+        .pass-link a,
+        .signup-link a {
+          color: #1a75ff;
+          text-decoration: none;
+        }
+        .pass-link a:hover,
+        .signup-link a:hover {
+          text-decoration: underline;
+        }
+
+        .btn {
+          height: 50px;
+          width: 100%;
+          border-radius: 15px;
+          background: -webkit-linear-gradient(
+            right,
+            #003366,
+            #004080,
+            #0059b3,
+            #0073e6
+          );
+          transition: all 0.4s ease;
+
+          &:hover {
+            background: -webkit-linear-gradient(
+              right,
+              #136bc4,
+              #5aa2ea,
+              #60adff,
+              #0073e6b1
+            );
+            transition: all 0.4s ease;
+          }
+
+          input[type='submit'] {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            position: relative;
+            background: none;
+            border: none;
+            color: #fff;
+            padding-left: 0;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

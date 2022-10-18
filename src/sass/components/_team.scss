@@ -1,0 +1,80 @@
+.section-title {
+  @extend %text700;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: $texcolor;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 0px;
+    padding-bottom: 50px;
+    font-size: 2.5rem;
+  }
+}
+
+.team {
+  .container {
+    padding: 0px 15px;
+  }
+  background-color: $color;
+
+  .team__ul {
+    list-style: none;
+
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .team__li {
+    box-shadow: 0px 1px 3px $colorteam, 0px 1px 1px $colorteam2,
+      0px 2px 1px $colorteam3;
+    border-radius: 0px 0px 4px 4px;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 0px;
+    }
+  }
+
+  .figcaption {
+    width: 100%;
+    margin-top: -0.3rem;
+    padding: 30px 0px;
+    background-color: $colorwhite;
+    color: $texcolor;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.17;
+    text-align: center;
+    border-radius: 0px 0px 4px 4px;
+
+    &_p {
+      padding-top: 10px;
+      @extend %text400;
+      text-align: center;
+      color: $colorp;
+    }
+
+    .figure_ul {
+      @extend %flex;
+      list-style-type: none;
+      margin-top: 16px;
+    }
+  }
+
+  .item {
+    margin-right: 10px;
+  }
+
+  .item:last-child {
+    margin-right: 0;
+  }
+}

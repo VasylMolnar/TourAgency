@@ -1,0 +1,153 @@
+.tours {
+  ::-webkit-scrollbar {
+    width: 24px;
+    height: 8px;
+    background-color: #143861;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 10px #f3faf7;
+  }
+
+  background-color: $tem;
+
+  h1 {
+    @extend %text700;
+    font-size: 24px;
+    line-height: 37px;
+    color: $texcolor;
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 30px;
+      line-height: 40px;
+      margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      font-size: 36px;
+      line-height: 42px;
+      margin-bottom: 70px;
+    }
+  }
+}
+
+.tours__ul {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 30px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    gap: 50px;
+  }
+
+  .tours__li {
+    margin-bottom: 5px;
+    position: relative;
+    list-style: none;
+
+    img {
+      display: block;
+      height: 170px;
+      width: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+
+      @media screen and (min-width: $tablet) {
+        height: 250px;
+        width: 370px;
+      }
+
+      @media screen and (min-width: $desktop) {
+        height: 300px;
+        width: 460px;
+      }
+    }
+
+    h3 {
+      position: absolute;
+      text-transform: uppercase;
+      padding: 7px 0px;
+      bottom: 0;
+      width: 100%;
+      @extend %text700;
+      font-size: 10px;
+
+      background: rgba(47, 48, 58, 0.8);
+      color: $colorwhite;
+      text-align: center;
+      border-radius: 10px;
+
+      @media screen and (min-width: $tablet) {
+        padding: 27px 0px;
+        font-size: 14px;
+      }
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+
+      .text {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px 5px;
+        @extend %text400;
+        font-size: 13px;
+
+        transform: translateY(250px);
+        transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        background: $colortext;
+        color: $colorwhite;
+        width: 100%;
+        height: 100%;
+
+        @media screen and (min-width: $tablet) {
+          padding: 40px 10px;
+          font-size: 15px;
+        }
+
+        @media screen and (min-width: $desktop) {
+          padding: 63px 24px;
+          font-size: 18px;
+        }
+      }
+
+      .text__btn {
+        margin-top: 10px;
+        width: 50px;
+        height: 30px;
+
+        border: none;
+        border-radius: 10px;
+        background-color: $colorwhite;
+        color: $texcolor;
+        cursor: pointer;
+
+        @media screen and (min-width: $tablet) {
+          margin-top: 50px;
+          width: 150px;
+          height: 50px;
+        }
+      }
+    }
+
+    &:hover .text {
+      transform: translateY(0px);
+      opacity: 1;
+      transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}
