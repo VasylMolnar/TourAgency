@@ -2,7 +2,7 @@
   "name": "touragencyfrontend",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/VasylMolnar/TourAgencyFrontend#readme",
+  "homepage": "https://vasylmolnar.github.io/TourAgencyFrontend/",
   "scripts": {
     "start": "parcel public/*.html",
     "build": "parcel build public/*.html --public-url /TourAgency/"
