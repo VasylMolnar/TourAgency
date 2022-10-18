@@ -67,5 +67,11 @@
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{js,jsx,css,md}": "prettier --write"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
