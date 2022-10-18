@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VasylMolnar/TourAgencyFrontend.git"
+    "url": "git+https://github.com/VasylMolnar/TourAgency.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VasylMolnar/TourAgencyFrontend/issues"
+    "url": "https://github.com/VasylMolnar/TourAgency/issues"
   },
-  "homepage": "https://vasylmolnar.github.io/TourAgencyFrontend/",
+  "homepage": "https://vasylmolnar.github.io/TourAgency/",
   "scripts": {
     "start": "parcel public/*.html",
-    "build": "parcel build public/*.html --public-url /TourAgencyFrontend/"
+    "build": "parcel build public/*.html --public-url /TourAgency/"
   },
   "dependencies": {
     "@babel/generator": "^7.19.5",
