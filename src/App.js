@@ -4,8 +4,8 @@ import Home from './pages/Home/Home';
 function App() {
   return (
     <BrowserRouter>
-      <Routes basename="/Home">
-        <Route path="/" exact component={<Home />} />
+      <Routes>
+        <Route path="/" exact element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
