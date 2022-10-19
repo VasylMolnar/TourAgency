@@ -1,6 +1,4 @@
 import svg from '../../images/SVG/symbol-defs.svg';
-//or href={`${require('../images/SVG/symbol-defs.svg')}#icon-mail`}
-//<img src={require('./logo.jpeg')} />
 
 const Team = () => {
   return (
