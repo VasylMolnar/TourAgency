@@ -2,6 +2,7 @@ import src1 from '../../images/tour/g-6.jpg';
 import src2 from '../../images/tour/p-3.jpg';
 import src3 from '../../images/tour/korea.jpg';
 import svg from '../../images/SVG/symbol.svg';
+import { Link } from 'react-router-dom';
 
 const Gallery = () => {
   return (
@@ -58,12 +59,12 @@ const Gallery = () => {
             </div>
           </div>
         </div>
-        <a type="submit" className="button" href="./gallery.html">
+        <Link to="/gallery" type="submit" className="button">
           Більше
           <svg className="icon-send" width="24" height="24">
             <use href={`${svg}#icon-arrow-right2`} />
           </svg>
-        </a>
+        </Link>
       </div>
     </section>
   );

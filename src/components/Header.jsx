@@ -1,6 +1,7 @@
 import svg1 from '../images/SVG/autor.svg';
 import svg2 from '../images/SVG/symbol-defs.svg';
 //or href={`${require('../images/SVG/symbol-defs.svg')}#icon-mail`}
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const navMenu = () => {
@@ -25,9 +26,9 @@ const Header = () => {
           <nav className="nav__bar">
             <ul className="nav__list">
               <li className="item">
-                <a className="nav__link current" href="index.html">
+                <Link to="/" className="nav__link current">
                   Головна
-                </a>
+                </Link>
               </li>
               <li className="item">
                 <a className="nav__link" href="#tours">
