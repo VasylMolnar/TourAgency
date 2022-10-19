@@ -9,6 +9,8 @@ import Team from '../../components/main/Team';
 import Footer from '../../components/Footer';
 import Registration_modal from '../../components/Registration__modal';
 import Email_modal from '../../components/Email__modal';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import gallery from '../Gallery/GalleryPages';
 
 const Home = () => {
   return (
