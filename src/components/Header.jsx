@@ -2,18 +2,19 @@ import svg1 from '../images/SVG/autor.svg';
 import svg2 from '../images/SVG/symbol-defs.svg';
 //or href={`${require('../images/SVG/symbol-defs.svg')}#icon-mail`}
 
-const navMenu = () => {
-  const menuBtnRef = document.querySelector('[data-menu-button]');
-  const mobileMenuRef = document.querySelector('[data-menu]');
-  const expanded = menuBtnRef.getAttribute('aria-expanded') === 'true' || false;
-
-  menuBtnRef.classList.toggle('is-open');
-  menuBtnRef.setAttribute('aria-expanded', !expanded);
-
-  mobileMenuRef.classList.toggle('is-open');
-};
-
 const Header = () => {
+  const navMenu = () => {
+    const menuBtnRef = document.querySelector('[data-menu-button]');
+    const mobileMenuRef = document.querySelector('[data-menu]');
+    const expanded =
+      menuBtnRef.getAttribute('aria-expanded') === 'true' || false;
+
+    menuBtnRef.classList.toggle('is-open');
+    menuBtnRef.setAttribute('aria-expanded', !expanded);
+
+    mobileMenuRef.classList.toggle('is-open');
+  };
+
   return (
     <header className="header">
       <div className="container">
