@@ -1,7 +1,11 @@
+import Header from '../../components/Header';
+import gallery from '../../components/gallery/Gallery';
+import Footer from '../../components/Footer';
+
 const Gallery = () => {
   return (
     <div>
-      <h1>hello</h1>
+      <gallery />
     </div>
   );
 };
