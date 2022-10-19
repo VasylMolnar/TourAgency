@@ -1,13 +1,15 @@
 import Header from '../../components/Header';
-import gallery from '../../components/gallery/Gallery';
+import Gallery from '../../components/gallery/Gallery';
 import Footer from '../../components/Footer';
 
-const Gallery = () => {
+const GalleryPage = () => {
   return (
     <div>
-      <gallery />
+      <Header />
+      <Gallery />
+      <Footer />
     </div>
   );
 };
 
-export default Gallery;
+export default GalleryPage;
