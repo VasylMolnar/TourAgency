@@ -4,20 +4,26 @@ const Gallery = () => {
       <div className="container">
         <form className="search__form">
           <div className="search">
+            <svg width={24} height={24} className="icon">
+              <use
+                href={`${require('../../images/SVG/search.svg')}#icon-search`}
+              />
+            </svg>
+
             <input
               className="search__input"
               type="text"
               name="searchQuery"
               autoComplete="off"
-              placeholder="Search images..."
+              placeholder="Пошук країн..."
             />
           </div>
-          <button type="submit">Search</button>
+          <button type="submit">Пошук</button>
         </form>
 
         <ul className="btn-group_ul">
           <li>
-            <button className="submit_button" type="button">
+            <button className="submit_button" type="button" data>
               Україна
             </button>
           </li>
@@ -55,7 +61,7 @@ const Gallery = () => {
 
         <div className="gallery" />
         <button type="button" className="load-more is-hidden">
-          Load more
+          Завантажити більше
         </button>
       </div>
     </main>
