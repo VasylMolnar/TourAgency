@@ -16,6 +16,21 @@ const Header = () => {
     mobileMenuRef.classList.toggle('is-open');
   };
 
+  function onTagsContainerClick(event) {
+    if (event.target.nodeName !== 'A') {
+      return;
+    }
+
+    const currentActiveBtn = document.querySelector('.current');
+
+    if (currentActiveBtn) {
+      currentActiveBtn.classList.remove('current');
+    }
+
+    const nextActiveBtn = event.target;
+    nextActiveBtn.classList.add('current');
+  }
+
   return (
     <header className="header">
       <div className="container">
@@ -24,14 +39,14 @@ const Header = () => {
         </a>
         <div className="nav-menu" data-menu>
           <nav className="nav__bar">
-            <ul className="nav__list">
+            <ul className="nav__list" onClick={onTagsContainerClick}>
               <li className="item">
                 <Link to="/" className="nav__link current">
                   Головна
                 </Link>
               </li>
               <li className="item">
-                <a className="nav__link" href="#tours">
+                <a className="nav__link" href="/#tours">
                   Тури
                 </a>
               </li>
@@ -46,7 +61,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="item">
-                <a className="nav__link" href="#gallery">
+                <a className="nav__link" href="/#gallery">
                   Галерея
                 </a>
               </li>
