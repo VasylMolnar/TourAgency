@@ -10,24 +10,26 @@ export default function createCards(cards) {
         comments,
         downloads,
       } = {}) => {
-        return `<div class='photo-card'>
+        const tag = tags.split(',');
+        return ` <div class="photo-card">
         <a href=${largeImageURL}>
-          <img src=${webformatURL}, loading="lazy", alt=${tags}  />
+          <img src=${webformatURL} alt=${tag} loading="lazy" />
         </a>
-        <div class='info'>
-          <p class='info-item'>
-            <b>Likes</b>
-            ${likes}
+
+        <div class="info">
+          <p class="info-item">
+            <b>Likes</b> ${likes}
           </p>
-          <p class='info-item'>
-            <b>Views</b>
-            ${views}
+
+          <p class="info-item">
+            <b>Views</b> ${views}
           </p>
-          <p class='info-item'>
+
+          <p class="info-item">
             <b>Comments</b>
             ${comments}
           </p>
-          <p class='info-item'>
+          <p class="info-item">
             <b>Downloads</b>
             ${downloads}
           </p>

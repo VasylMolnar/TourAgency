@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const ImageSearch = ({ searchText }) => {
-  const [text, setText] = useState('');
-  const page = 1;
-  const onSubmit = e => {
-    e.preventDefault();
-    searchText(text, page);
+  let searchValue = '';
+  let currentPage = 1;
+
+  const onSubmit = event => {
+    event.preventDefault();
+    searchValue = event.currentTarget.searchQuery.value;
+    currentPage = 1;
+    if (searchValue === '') {
+      Notify.failure('Введіть щось.');
+      document.querySelector('.gallery').textContent = '';
+      document.querySelector('.load-more').classList.add('is-hidden');
+      return;
+    }
+
+    searchText(searchValue, currentPage);
   };
 
   return (
