@@ -1,4 +1,10 @@
+import svg from '../images/SVG/icons.svg';
+import svg2 from '../images/SVG/symbol-defs.svg';
 const Email_modal = () => {
+  function toggleModal() {
+    document.querySelector('[data-modal]').classList.toggle('is-hidden');
+  }
+
   return (
     <div className="email__modal">
       <div className="backdrop is-hidden" data-modal>
@@ -11,7 +17,7 @@ const Email_modal = () => {
               <span className="form_label">Ім'я</span>
               <input type="text" className="form-input" name="name" />
               <svg className="icon" width={12} height={12}>
-                <use href="./images/SVG/symbol-defs.svg#icon-name" />
+                <use href={`${svg2}#icon-name`} />
               </svg>
             </label>
             <label className="form_item">
@@ -23,7 +29,7 @@ const Email_modal = () => {
                 placeholder=" "
               />
               <svg className="icon" width={12} height={12}>
-                <use href="./images/SVG/icons.svg#icon-phone" />
+                <use href={`${svg}#icon-phone`} />
               </svg>
             </label>
             <label className="form_item">
@@ -35,7 +41,7 @@ const Email_modal = () => {
                 placeholder=" "
               />
               <svg className="icon" width={15} height={12}>
-                <use href="./images/SVG/symbol-defs.svg#icon-post" />
+                <use href={`${svg2}#icon-post`} />
               </svg>
             </label>
             <label className="form_item ">
@@ -68,9 +74,14 @@ const Email_modal = () => {
               </button>
             </div>
           </form>
-          <button type="submit" className="close" data-modal-close>
+          <button
+            type="submit"
+            className="close"
+            data-modal-close
+            onClick={toggleModal}
+          >
             <svg className="icon-close" width={11} height={11}>
-              <use href="./images/SVG/icons.svg#icon-close" />
+              <use href={`${svg}#icon-close`} />
             </svg>
           </button>
         </div>

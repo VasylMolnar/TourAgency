@@ -31,6 +31,12 @@ const Header = () => {
     nextActiveBtn.classList.add('current');
   }
 
+  function toggleModal() {
+    document
+      .querySelector('.backdrop__registration')
+      .classList.toggle('is-hidden');
+  }
+
   return (
     <header className="header">
       <div className="container">
@@ -85,7 +91,7 @@ const Header = () => {
               </a>
             </li>
             <li className="item">
-              <a className="nav__link" data-modalreg-open>
+              <a className="nav__link" data-modalreg-open onClick={toggleModal}>
                 <svg className="icon-contact" width={16} height={16}>
                   <use href={`${svg1}#icon-user`} />
                 </svg>

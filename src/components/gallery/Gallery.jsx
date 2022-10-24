@@ -148,6 +148,7 @@ const Gallery = () => {
     </main>
   );
   */
+
   useEffect(() => {
     fn();
   });

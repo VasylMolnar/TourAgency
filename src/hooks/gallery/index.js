@@ -2,8 +2,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import fetchCards from './fetchCards';
 import createCards from './createCards';
 import throttle from 'lodash.throttle';
-//import SimpleLightbox from 'simplelightbox';
-//import 'simplelightbox/dist/simple-lightbox.min.css';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 export default function fn() {
   const refs = {
@@ -20,9 +20,14 @@ export default function fn() {
   refs.searchForm.addEventListener('submit', searchForm);
   refs.loadMoreBtn.addEventListener('click', onClickLoadMoreBtn);
   refs.btn_group.addEventListener('click', searchBtn);
-  window.addEventListener('scroll', throttle(onScrollWindow, 500));
 
   searchCards(searchValue, currentPage);
+
+  let lightbox = new SimpleLightbox('.photo-card a', {
+    captions: true,
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
 
   async function searchCards(searchValue, currentPage) {
     await fetchCards(searchValue, currentPage)
@@ -48,8 +53,10 @@ export default function fn() {
         refs.gallery.textContent = '';
         const markup = createCards(value.hits);
         refs.gallery.insertAdjacentHTML('afterbegin', markup);
+        lightbox.refresh();
         Notify.success(`Ура! Ми знайшли ${value.totalHits} зображень.`);
-        //lightbox.refresh();
+
+        window.addEventListener('scroll', throttle(onScrollWindow, 500));
 
         const { height: cardHeight } = document
           .querySelector('.gallery')
@@ -66,13 +73,13 @@ export default function fn() {
       });
   }
 
-  async function searchBtn(event) {
+  function searchBtn(event) {
     searchValue = event.target.dataset.search;
     currentPage = 1;
-    await searchCards(searchValue, currentPage);
+    searchCards(searchValue, currentPage);
   }
 
-  async function searchForm(event) {
+  function searchForm(event) {
     event.preventDefault();
     searchValue = event.currentTarget.searchQuery.value;
     currentPage = 1;
@@ -85,15 +92,15 @@ export default function fn() {
       return;
     }
 
-    await searchCards(searchValue, currentPage);
+    searchCards(searchValue, currentPage);
   }
 
   async function onClickLoadMoreBtn() {
     currentPage += 1;
     const response = await fetchCards(searchValue, currentPage);
     refs.gallery.insertAdjacentHTML('beforeend', createCards(response.hits));
+    lightbox.refresh();
     totalHits += response.hits.length;
-    //lightbox.refresh();
 
     if (totalHits === response.totalHits) {
       refs.loadMoreBtn.classList.add('is-hidden');
@@ -113,7 +120,8 @@ export default function fn() {
       currentPage += 1;
       const response = await fetchCards(searchValue, currentPage);
       refs.gallery.insertAdjacentHTML('beforeend', createCards(response.hits));
-      //lightbox.refresh();
+      lightbox.refresh();
+
       totalHits += response.hits.length;
 
       if (totalHits === response.totalHits) {
@@ -125,10 +133,3 @@ export default function fn() {
     }
   }
 }
-
-/*
-let lightbox = new SimpleLightbox('.photo-card a', {
-  captions: true,
-  captionsData: 'alt',
-  captionDelay: 250,
-});*/
