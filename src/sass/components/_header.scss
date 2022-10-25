@@ -252,12 +252,15 @@
   & .close {
     display: none;
   }
+
   &.is-open .close {
     display: block;
   }
+
   &.is-open .open {
     display: none;
   }
+
   &:hover,
   &:focus {
     fill: $background;

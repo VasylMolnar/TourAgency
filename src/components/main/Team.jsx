@@ -10,21 +10,19 @@ const Team = () => {
             <figure>
               <picture>
                 <source
-                  //src={require('../../images/team/Igor-480.jpg', '../../images/team/Igor-mobile2x.jpg')}
+                  srcSet={require('../../images/team/Igor-480.jpg')}
                   media="(max-width: 767px)"
                 />
                 <source
-                  //src={require('../../images/team/Igor-768.jpg', '../../images/team/Igor-tabl2x.jpg')}
-                  //src={require('../../images/team/Igor-768.jpg')}
+                  srcSet={require('../../images/team/Igor-768.jpg')}
                   media="(max-width: 1199px)"
                 />
                 <source
-                  //src={`${require('../../images/team/Igor.jpg', '../../images/team/Igor-desk2x.jpg')}`}
-                  //src={require('../../images/team/Igor.jpg')}
+                  srcSet={require('../../images/team/Igor.jpg')}
                   media="(min-width: 1200px)"
                 />
                 <img
-                  //src={require('../../images/team/Igor-480.jpg', '../../images/team/Igor-desk2x.jpg')}
+                  src={require('../../images/team/Igor-480.jpg')}
                   alt="Ігор Дем'яненко"
                 />
               </picture>
@@ -76,24 +74,23 @@ const Team = () => {
               </figcaption>
             </figure>
           </li>
-          {/*
           <li className="team__li">
             <figure>
               <picture>
                 <source
-                  src={`${require('../../images/team/Olga-480.jpg', '../../images/team/Olga-mobile2x.jpg')}`}
+                  srcSet={require('../../images/team/Olga-480.jpg')}
                   media="(max-width: 767px)"
                 />
                 <source
-                  src={`${require('../../images/team/Olga-768.jpg', '../../images/team/Olga-tabl2x.jpg')}`}
+                  srcSet={require('../../images/team/Olga-768.jpg')}
                   media="(max-width: 1199px)"
                 />
                 <source
-                  src={`${require('../../images/team/Olga.jpg', '../../images/team/Olga-desk2x.jpg')}`}
+                  srcSet={require('../../images/team/Olga.jpg')}
                   media="(min-width: 1200px)"
                 />
                 <img
-                  src={`${require('../../images/team/Olga-480.jpg')}`}
+                  src={require('../../images/team/Olga-480.jpg')}
                   alt="Ольга Рєпіна"
                 />
               </picture>
@@ -149,19 +146,19 @@ const Team = () => {
             <figure>
               <picture>
                 <source
-                  src={`${require('../../images/team/Nikolay-480.jpg', '../../images/team/Nikolay-mobile2x.jpg')}`}
+                  srcSet={require('../../images/team/Nikolay-480.jpg')}
                   media="(max-width: 767px)"
                 />
                 <source
-                  src={`${require('../../images/team/Nikolay-768.jpg', '../../images/team/Nikolay-tabl2x.jpg')}`}
+                  srcSet={require('../../images/team/Nikolay-768.jpg')}
                   media="(max-width: 1199px)"
                 />
                 <source
-                  src={`${require('../../images/team/Nikolay.jpg', '../../images/team/Nikolay-desk2x.jpg')}`}
+                  srcSet={require('../../images/team/Nikolay.jpg')}
                   media="(min-width: 1200px)"
                 />
                 <img
-                  src={`${require('../../images/team/Nikolay-480.jpg')}`}
+                  src={require('../../images/team/Nikolay-480.jpg')}
                   alt="Микола Тарасов"
                 />
               </picture>
@@ -217,19 +214,19 @@ const Team = () => {
             <figure>
               <picture>
                 <source
-                  src={`${require('../../images/team/Mikhail-480.jpg', '../../images/team/Mikhail-mobile2x.jpg')}`}
+                  srcSet={require('../../images/team/Mikhail-480.jpg')}
                   media="(max-width: 767px)"
                 />
                 <source
-                  src={`${require('../../images/team/Mikhail-768.jpg', '../../images/team/Mikhail-tabl2x.jpg')}`}
+                  srcSet={require('../../images/team/Mikhail-768.jpg')}
                   media="(max-width: 1199px)"
                 />
                 <source
-                  src={`${require('../../images/team/Mikhail.jpg', '../../images/team/Mikhail-desk2x.jpg')}`}
+                  srcSet={require('../../images/team/Mikhail.jpg')}
                   media="(min-width: 1200px)"
                 />
                 <img
-                  src={`${require('../../images/team/Mikhail-480.jpg')}`}
+                  src={require('../../images/team/Mikhail-480.jpg')}
                   alt="Михайло Єрмаков"
                 />
               </picture>
@@ -280,7 +277,7 @@ const Team = () => {
                 </ul>
               </figcaption>
             </figure>
-          </li>*/}
+          </li>
         </ul>
       </div>
     </section>
