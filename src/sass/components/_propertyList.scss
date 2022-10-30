@@ -1,0 +1,39 @@
+.pList {
+  display: flex;
+  flex-wrap: wrap;
+
+  .pListItem {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.pListImg {
+  width: 300px;
+  height: 200px;
+
+  @media screen and (min-width: 768px) {
+    width: 224px;
+  }
+}
+
+.pListTitles > h1 {
+  font-size: 18px;
+  color: #444;
+  text-transform: capitalize;
+}
+
+.pListTitles > h2 {
+  font-size: 14px;
+  font-weight: 300;
+}

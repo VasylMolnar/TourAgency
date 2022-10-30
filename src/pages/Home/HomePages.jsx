@@ -8,7 +8,9 @@ import Team from '../../components/main/Team';
 import Footer from '../../components/Footer';
 import Registration_modal from '../../components/Registration__modal';
 import Email_modal from '../../components/Email__modal';
-import PropertyList from '../../components/main/propertyList/PropertyList';
+import PropertyList from '../../components/main/PropertyList';
+import Featured from '../../components/main/Featured';
+//import FeaturedProperties from '../../components/main/featuredProperties/FeaturedProperties';
 
 const Home = () => {
   return (
@@ -16,7 +18,12 @@ const Home = () => {
       <Header />
       <Hero />
       <Booking />
-      <PropertyList />
+      <section className="section hotels" id="hotels">
+        <div className="container">
+          <Featured />
+          <PropertyList />
+        </div>
+      </section>
       <Tour />
       <Flights />
       <Gallery />
