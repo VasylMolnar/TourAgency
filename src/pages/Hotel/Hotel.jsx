@@ -1,8 +1,6 @@
 import './hotel.css';
-import Navbar from '../../components/navbar/Navbar';
-import Header from '../../components/header/Header';
-import MailList from '../../components/mailList/MailList';
-import Footer from '../../components/footer/Footer';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleArrowLeft,
@@ -16,6 +14,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
 import Reserve from '../../components/reserve/Reserve';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const Hotel = () => {
   const location = useLocation();
@@ -60,23 +59,23 @@ const Hotel = () => {
     if (user) {
       setOpenModal(true);
     } else {
-      navigate('/login');
+      navigate('/');
+      Notify.failure('Зареєструйтесь або увійдіть');
     }
   };
 
   return (
     <div>
-      <Navbar />
-      <Header type="list" />
+      <Header />
       {loading ? (
-        'loading'
+        'Завантаження'
       ) : (
         <div className="hotelContainer">
           {open && (
             <div className="slider">
               <FontAwesomeIcon
                 icon={faCircleXmark}
-                className="close"
+                className="close_btn"
                 onClick={() => setOpen(false)}
               />
               <FontAwesomeIcon
@@ -99,18 +98,18 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow">Бронюйте зараз!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – {data.distance}m from center
+              Чудове розташування – {data.distance}m від центру
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+              Забронюйте проживання ${data.cheapestPrice} у цій власності та
+              отримайте безкоштовне таксі в аеропорт
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
@@ -130,24 +129,23 @@ const Hotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay!</h1>
+                <h1>Ідеально підходить для {days} ночей.</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
-                  excellent location score of 9.8!
+                  Цей готель розташований у самому серці міста відмінне
+                  розташування оцінка 9,8!
                 </span>
                 <h2>
                   <b>${days * data.cheapestPrice * options.room}</b> ({days}{' '}
-                  nights)
+                  ночей)
                 </h2>
-                <button onClick={handleClick}>Reserve or Book Now!</button>
+                <button onClick={handleClick}>Бронюйте зараз!</button>
               </div>
             </div>
           </div>
-          <MailList />
-          <Footer />
         </div>
       )}
       {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
+      <Footer />
     </div>
   );
 };

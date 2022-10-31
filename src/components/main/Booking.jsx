@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   faBed,
   faCalendarDays,
@@ -17,7 +16,6 @@ import { SearchContext } from '../../context/SearchContext';
 const Booking = ({ type }) => {
   const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
-
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -25,7 +23,6 @@ const Booking = ({ type }) => {
       key: 'selection',
     },
   ]);
-
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
@@ -34,7 +31,6 @@ const Booking = ({ type }) => {
   });
 
   const navigate = useNavigate();
-
   const handleOption = (name, operation) => {
     setOptions(prev => {
       return {
@@ -45,7 +41,6 @@ const Booking = ({ type }) => {
   };
 
   const { dispatch } = useContext(SearchContext);
-
   const handleSearch = () => {
     dispatch({ type: 'NEW_SEARCH', payload: { destination, dates, options } });
     navigate('/hotels', { state: { destination, dates, options } });
