@@ -10,7 +10,6 @@ import Registration_modal from '../../components/Registration__modal';
 import Email_modal from '../../components/Email__modal';
 import PropertyList from '../../components/main/PropertyList';
 import Featured from '../../components/main/Featured';
-//import FeaturedProperties from '../../components/main/featuredProperties/FeaturedProperties';
 
 const Home = () => {
   return (
