@@ -49,7 +49,7 @@ const Registration_modal = () => {
         credentials
       );
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
-      navigate('/');
+      navigate('/user');
       Notify.success('Ввітаємо');
     } catch (err) {
       Notify.warning(err.message);

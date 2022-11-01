@@ -6,9 +6,11 @@ import { useState } from 'react';
 import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import SearchItem from '../../components/searchItem/SearchItem';
+import debounce from 'lodash.debounce';
+import { Notify } from 'notiflix';
 import useFetch from '../../hooks/useFetch';
 
-const List = () => {
+const Hotels = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
   const [dates, setDates] = useState(location.state.dates);
@@ -34,7 +36,11 @@ const List = () => {
             <h1 className="lsTitle">Пошук</h1>
             <div className="lsItem">
               <label>Пункт призначення</label>
-              <input placeholder={destination} type="text" />
+              <input
+                placeholder={destination}
+                type="text"
+                onChange={debounce(e => setDestination(e.target.value), 700)}
+              />
             </div>
             <div className="lsItem">
               <label>Дата заїзду</label>
@@ -59,7 +65,7 @@ const List = () => {
                   </span>
                   <input
                     type="number"
-                    onChange={e => setMin(e.target.value)}
+                    onChange={debounce(e => setMin(e.target.value), 500)}
                     className="lsOptionInput"
                   />
                 </div>
@@ -69,7 +75,7 @@ const List = () => {
                   </span>
                   <input
                     type="number"
-                    onChange={e => setMax(e.target.value)}
+                    onChange={debounce(e => setMax(e.target.value), 500)}
                     className="lsOptionInput"
                   />
                 </div>
@@ -122,4 +128,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default Hotels;
