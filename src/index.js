@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './sass/main.scss';
-import { BrowserRouter } from 'react-router-dom';
 import { SearchContextProvider } from './context/SearchContext';
 import { AuthContextProvider } from './context/AuthContext';
 

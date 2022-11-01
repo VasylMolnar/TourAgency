@@ -1,4 +1,9 @@
 import svg from '../images/SVG/icons.svg';
+import axios from 'axios';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const Registration_modal = () => {
   function toggleModal() {
@@ -20,6 +25,37 @@ const Registration_modal = () => {
     document.querySelector('label.login').style.color = 'black';
     document.querySelector('label.signup').style.color = 'white';
   }
+
+  const [credentials, setCredentials] = useState({
+    username: undefined,
+    password: undefined,
+  });
+
+  const { loading, error, dispatch } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleChange = e => {
+    setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleClick = async e => {
+    e.preventDefault();
+    dispatch({ type: 'LOGIN_START' });
+
+    try {
+      const res = await axios.post(
+        'http://localhost:8800/auth/login',
+        credentials
+      );
+      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
+      navigate('/');
+      Notify.success('Ввітаємо');
+    } catch (err) {
+      Notify.warning(err.message);
+      dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
+    }
+  };
 
   return (
     <div className="registration__modal">
@@ -45,20 +81,32 @@ const Registration_modal = () => {
               <form action="#" className="login" style={{ marginLeft: '0%' }}>
                 <div className="field">
                   <input
+                    id="username"
                     type="text"
                     placeholder="Адреса електронної пошти"
-                    required
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="field">
-                  <input type="password" placeholder="Пароль" required />
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Пароль"
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="pass-link">
                   <a href="#">Забули пароль?</a>
                 </div>
                 <div className="field btn">
                   <div className="btn-layer" />
-                  <input type="submit" defaultValue="Увійти" />
+                  <input
+                    type="submit"
+                    disabled={loading}
+                    onClick={handleClick}
+                  />
+
+                  {error && <span>{error.message}</span>}
                 </div>
               </form>
               <form action="#" className="signup">

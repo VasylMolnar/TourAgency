@@ -66,7 +66,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="item">
-                <a className="nav__link" href="#">
+                <a className="nav__link" href="/#hotels">
                   Готелі
                 </a>
               </li>

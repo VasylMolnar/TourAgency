@@ -1,4 +1,5 @@
 import React from 'react';
+import { Notify } from 'notiflix';
 import {
   faBed,
   faCalendarDays,
@@ -42,6 +43,10 @@ const Booking = ({ type }) => {
 
   const { dispatch } = useContext(SearchContext);
   const handleSearch = () => {
+    if (destination == '') {
+      Notify.failure('Введіть щось!');
+      return;
+    }
     dispatch({ type: 'NEW_SEARCH', payload: { destination, dates, options } });
     navigate('/hotels', { state: { destination, dates, options } });
   };

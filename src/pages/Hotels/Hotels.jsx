@@ -106,7 +106,7 @@ const List = () => {
           </div>
           <div className="listResult">
             {loading ? (
-              'loading'
+              'Завантаження'
             ) : (
               <>
                 {data.map(item => (

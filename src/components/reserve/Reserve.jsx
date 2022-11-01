@@ -65,10 +65,12 @@ const Reserve = ({ setOpen, hotelId }) => {
       navigate('/');
     } catch (err) {}
   };
+
   return (
     <div className="reserve">
-      <h1>HELLO</h1>
       <div className="rContainer">
+        <h1>HELLO</h1>
+
         <FontAwesomeIcon
           icon={faCircleXmark}
           className="rClose"
