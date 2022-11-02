@@ -1,9 +1,14 @@
 import svg1 from '../images/SVG/autor.svg';
 import svg2 from '../images/SVG/symbol-defs.svg';
 //or href={`${require('../images/SVG/symbol-defs.svg')}#icon-mail`}
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const navMenu = () => {
     const menuBtnRef = document.querySelector('[data-menu-button]');
     const mobileMenuRef = document.querySelector('[data-menu]');
@@ -40,6 +45,10 @@ const Header = () => {
       .querySelector('.backdrop__registration')
       .classList.toggle('is-hidden');
   }
+
+  const userPage = () => {
+    navigate('/user');
+  };
 
   return (
     <header className="header">
@@ -95,12 +104,22 @@ const Header = () => {
               </a>
             </li>
             <li className="item">
-              <a className="nav__link" data-modalreg-open onClick={toggleModal}>
-                <svg className="icon-contact" width={16} height={16}>
-                  <use href={`${svg1}#icon-user`} />
-                </svg>
-                Профіль
-              </a>
+              {user ? (
+                <a className="nav__link" onClick={userPage}>
+                  {user.username}
+                </a>
+              ) : (
+                <a
+                  className="nav__link"
+                  data-modalreg-open
+                  onClick={toggleModal}
+                >
+                  <svg className="icon-contact" width={16} height={16}>
+                    <use href={`${svg1}#icon-user`} />
+                  </svg>
+                  Профіль
+                </a>
+              )}
             </li>
           </ul>
         </div>

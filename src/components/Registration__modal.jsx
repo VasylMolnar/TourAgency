@@ -25,21 +25,23 @@ const Registration_modal = () => {
     document.querySelector('label.login').style.color = 'black';
     document.querySelector('label.signup').style.color = 'white';
   }
-
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
+    email: undefined,
+    phone: undefined,
+    city: undefined,
+    country: undefined,
   });
-
-  const { loading, error, dispatch } = useContext(AuthContext);
-
-  const navigate = useNavigate();
 
   const handleChange = e => {
     setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async e => {
+  //login
+  const { loading, error, dispatch } = useContext(AuthContext);
+  const handleClickLogin = async e => {
     e.preventDefault();
     dispatch({ type: 'LOGIN_START' });
 
@@ -54,6 +56,22 @@ const Registration_modal = () => {
     } catch (err) {
       Notify.warning(err.message);
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
+    }
+  };
+
+  //signup
+  const handleClickSignup = async e => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        'http://localhost:8800/auth/register',
+        credentials
+      );
+      navigate('/');
+      Notify.success('Ввітаємо з реєстрацією');
+    } catch (err) {
+      Notify.warning(err.message);
     }
   };
 
@@ -83,7 +101,7 @@ const Registration_modal = () => {
                   <input
                     id="username"
                     type="text"
-                    placeholder="Адреса електронної пошти"
+                    placeholder="Адреса електронної пошти або імя"
                     onChange={handleChange}
                   />
                 </div>
@@ -103,7 +121,7 @@ const Registration_modal = () => {
                   <input
                     type="submit"
                     disabled={loading}
-                    onClick={handleClick}
+                    onClick={handleClickLogin}
                   />
 
                   {error && <span>{error.message}</span>}
@@ -113,23 +131,52 @@ const Registration_modal = () => {
                 <div className="field">
                   <input
                     type="text"
+                    id="email"
                     placeholder="Адреса електронної пошти"
                     required
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="field">
-                  <input type="password" placeholder="Пароль" required />
+                  <input
+                    type="text"
+                    id="username"
+                    placeholder="Імя"
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Телефон"
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    id="country"
+                    placeholder="Країна"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="field">
                   <input
                     type="password"
-                    placeholder="Підтвердьте пароль"
+                    id="password"
+                    placeholder="Пароль"
                     required
+                    onChange={handleChange}
                   />
                 </div>
+
                 <div className="field btn">
                   <div className="btn-layer" />
-                  <input type="submit" defaultValue="Реєстрація" />
+                  <input type="submit" onClick={handleClickSignup} />
                 </div>
               </form>
             </div>
