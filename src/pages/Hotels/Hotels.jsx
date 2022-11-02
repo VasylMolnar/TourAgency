@@ -19,7 +19,7 @@ const Hotels = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, loading, error, reFetch } = useFetch(
+  const { data, loading, error, reFetch, useEffect } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
