@@ -52,7 +52,7 @@ const Registration_modal = () => {
       );
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
       navigate('/user');
-      Notify.success('Ввітаємо');
+      Notify.success('Вітаємо');
     } catch (err) {
       Notify.warning(err.message);
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
@@ -69,7 +69,7 @@ const Registration_modal = () => {
         credentials
       );
       navigate('/');
-      Notify.success('Ввітаємо з реєстрацією');
+      Notify.success('Вітаємо з реєстрацією');
     } catch (err) {
       Notify.warning(err.message);
     }

@@ -1,12 +1,14 @@
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import './single.scss';
+import './user.scss';
 import { useNavigate } from 'react-router-dom';
 import List from '../../components/table/Table';
 import Chart from '../../components/chart/Chart';
+import useFetch from '../../hooks/useFetch.js';
 
 const User = () => {
   const navigate = useNavigate();
+  const { data } = useFetch(`/users/63653a27847d7f23012631c5`);
 
   const exit = () => {
     localStorage.clear();
@@ -22,38 +24,35 @@ const User = () => {
           <div className="left">
             <div className="editButton">Редагувати</div>
             <h1 className="title">Інформація</h1>
-            <div className="item">
-              <img
-                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                alt=""
-                className="itemImg"
-              />
-              <div className="details">
-                <h1 className="itemTitle">Jane Doe</h1>
-                <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">janedoe@gmail.com</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Телефон:</span>
-                  <span className="itemValue">+1 2345 67 89</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Адреса:</span>
-                  <span className="itemValue">
-                    Elton St. 234 Garden Yd. NewYork
-                  </span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Країна:</span>
-                  <span className="itemValue">USA</span>
-                </div>
 
-                <button className="btnExit" onClick={exit}>
-                  Вихід
-                </button>
+            {[data].map(item => (
+              <div className="item">
+                <img src={item.img} alt="img" className="itemImg" />
+                <div className="details">
+                  <h1 className="itemTitle">{item.username}</h1>
+                  <div className="detailItem">
+                    <span className="itemKey">Email:</span>
+                    <span className="itemValue">{item.email}</span>
+                  </div>
+                  <div className="detailItem">
+                    <span className="itemKey">Телефон:</span>
+                    <span className="itemValue">{item.phone}</span>
+                  </div>
+                  <div className="detailItem">
+                    <span className="itemKey">Країна:</span>
+                    <span className="itemValue">{item.country}</span>
+                  </div>
+                  <div className="detailItem">
+                    <span className="itemKey">Місто:</span>
+                    <span className="itemValue">{item.city}</span>
+                  </div>
+
+                  <button className="btnExit" onClick={exit}>
+                    Вихід
+                  </button>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
           <div className="right">
