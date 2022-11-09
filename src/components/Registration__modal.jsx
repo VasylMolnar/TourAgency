@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+import user from '../pages/User/User';
 const Registration_modal = () => {
   function toggleModal() {
     document
@@ -51,7 +51,9 @@ const Registration_modal = () => {
         credentials
       );
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
-      navigate('/user');
+      setTimeout(() => {
+        navigate('/user');
+      }, 300);
       Notify.success('Вітаємо');
     } catch (err) {
       Notify.warning(err.message);

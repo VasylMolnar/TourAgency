@@ -5,15 +5,22 @@ import { useNavigate } from 'react-router-dom';
 import List from '../../components/table/Table';
 import Chart from '../../components/chart/Chart';
 import useFetch from '../../hooks/useFetch.js';
+import React, { useState, useEffect } from 'react';
 
 const User = () => {
   const navigate = useNavigate();
-  const { data } = useFetch(`/users/63653a27847d7f23012631c5`);
+  const { data } = useFetch(
+    `/users/${JSON.parse(localStorage.getItem('user'))._id}`
+  );
 
   const exit = () => {
     localStorage.clear();
     navigate('/');
     location.reload();
+  };
+
+  const update = () => {
+    navigate('/updateUser');
   };
 
   return (
@@ -22,7 +29,9 @@ const User = () => {
       <div className="singleContainer">
         <div className="top">
           <div className="left">
-            <div className="editButton">Редагувати</div>
+            <div className="editButton" onClick={update}>
+              Редагувати
+            </div>
             <h1 className="title">Інформація</h1>
 
             {[data].map(item => (
