@@ -61,7 +61,7 @@ const Booking = ({ type }) => {
               type="text"
               placeholder="Куди ти їдеш?"
               className="SearchInput"
-              onChange={e => setDestination(e.target.value)}
+              onChange={e => setDestination(e.target.value.toLowerCase())}
             />
           </div>
           <div className="SearchItem">
