@@ -32,8 +32,11 @@ const New = ({ inputs }) => {
           img: foto,
         };
 
-        Notify.success('Користувача було додано');
-        await axios.post('/auth/register', newUser);
+        Notify.success('Користувача було оновлено');
+        await axios.put(
+          `/users/${JSON.parse(localStorage.getItem('user'))._id}`,
+          newUser
+        );
 
         setTimeout(() => {
           window.location.reload();
@@ -91,8 +94,8 @@ const New = ({ inputs }) => {
             </form>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
