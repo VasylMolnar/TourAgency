@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import user from '../pages/User/User';
+import { CookiesProvider } from 'react-cookie';
 const Registration_modal = () => {
   function toggleModal() {
     document
@@ -50,10 +51,13 @@ const Registration_modal = () => {
         'http://localhost:8800/auth/login',
         credentials
       );
+
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
+      console.log(res.cookie);
+      /*
       setTimeout(() => {
         navigate('/user');
-      }, 300);
+      }, 300);*/
       Notify.success('Вітаємо');
     } catch (err) {
       Notify.warning(err.message);

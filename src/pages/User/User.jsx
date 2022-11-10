@@ -8,7 +8,9 @@ import useFetch from '../../hooks/useFetch.js';
 import React, { useState, useEffect } from 'react';
 
 const User = () => {
+  /*
   const navigate = useNavigate();
+
   const { data } = useFetch(
     `/users/${JSON.parse(localStorage.getItem('user'))._id}`
   );
@@ -76,6 +78,7 @@ const User = () => {
       </div>
     </div>
   );
+  */
 };
 
 export default User;
