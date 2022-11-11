@@ -53,11 +53,10 @@ const Registration_modal = () => {
       );
 
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
-      console.log(res.cookie);
-      /*
+
       setTimeout(() => {
         navigate('/user');
-      }, 300);*/
+      }, 300);
       Notify.success('Вітаємо');
     } catch (err) {
       Notify.warning(err.message);

@@ -8,7 +8,6 @@ import useFetch from '../../hooks/useFetch.js';
 import React, { useState, useEffect } from 'react';
 
 const User = () => {
-  /*
   const navigate = useNavigate();
 
   const { data } = useFetch(
@@ -78,7 +77,6 @@ const User = () => {
       </div>
     </div>
   );
-  */
 };
 
 export default User;
