@@ -6,6 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import user from '../pages/User/User';
 import { CookiesProvider } from 'react-cookie';
+
 const Registration_modal = () => {
   function toggleModal() {
     document
@@ -26,6 +27,9 @@ const Registration_modal = () => {
     document.querySelector('label.login').style.color = 'black';
     document.querySelector('label.signup').style.color = 'white';
   }
+
+  const { loading, error, dispatch } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -41,7 +45,6 @@ const Registration_modal = () => {
   };
 
   //login
-  const { loading, error, dispatch } = useContext(AuthContext);
   const handleClickLogin = async e => {
     e.preventDefault();
     dispatch({ type: 'LOGIN_START' });

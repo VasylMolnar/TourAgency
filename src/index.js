@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './sass/main.scss';
 import { SearchContextProvider } from './context/SearchContext';
 import { AuthContextProvider } from './context/AuthContext';
-
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
