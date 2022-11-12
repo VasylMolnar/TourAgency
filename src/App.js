@@ -4,8 +4,8 @@ import Gallery from './pages/Gallery/GalleryPages';
 import Hotel from './pages/Hotel/Hotel';
 import Hotels from './pages/Hotels/Hotels';
 import User from './pages/User/User';
-import UpdateUser from './pages/UpdateUser/UpdateUser';
 import { userInputs } from './formSource';
+import UpdateUser from './pages/updateUser/UpdateUser';
 
 function App() {
   return (
