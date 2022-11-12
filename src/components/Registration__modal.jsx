@@ -28,9 +28,6 @@ const Registration_modal = () => {
     document.querySelector('label.signup').style.color = 'white';
   }
 
-  const { loading, error, dispatch } = useContext(AuthContext);
-
-  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
@@ -39,6 +36,10 @@ const Registration_modal = () => {
     city: undefined,
     country: undefined,
   });
+
+  const { loading, error, dispatch } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleChange = e => {
     setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }));
