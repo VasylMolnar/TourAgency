@@ -16,7 +16,7 @@
   "homepage": "https://vasylmolnar.github.io/TourAgency/",
   "scripts": {
     "start": "parcel public/*.html",
-    "build": "parcel build public/*.html --public-url /"
+    "build": "parcel build public/*.html --public-url /TourAgency"
   },
   "dependencies": {
     "@babel/generator": "^7.19.5",
