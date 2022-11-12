@@ -2,7 +2,7 @@
   "name": "touragency",
   "version": "1.0.0",
   "private": false,
-  "proxy": "http://localhost:8800/",
+  "proxy": "http://localhost:8800",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VasylMolnar/TourAgency.git"
@@ -16,7 +16,7 @@
   "homepage": "https://vasylmolnar.github.io/TourAgency/",
   "scripts": {
     "start": "parcel public/*.html",
-    "build": "parcel build public/*.html --public-url /TourAgency"
+    "build": "parcel build public/*.html --public-url /TourAgency/"
   },
   "dependencies": {
     "@babel/generator": "^7.19.5",
@@ -33,6 +33,7 @@
     "components": "^0.1.0",
     "date-fns": "^2.29.3",
     "handlebars": "^4.7.7",
+    "http-proxy-middleware": "^2.0.6",
     "jsonwebtoken": "^8.5.1",
     "lodash.throttle": "^4.1.1",
     "notiflix": "^3.2.5",
