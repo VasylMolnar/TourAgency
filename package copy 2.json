@@ -1,0 +1,79 @@
+{
+  "name": "touragency",
+  "version": "1.0.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VasylMolnar/TourAgency.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VasylMolnar/TourAgency/issues"
+  },
+  "homepage": "https://vasylmolnar.github.io/TourAgency/",
+  "scripts": {
+    "start": "parcel public/*.html",
+    "build": "parcel build public/*.html --public-url/TourAgency/"
+  },
+  "proxy": "http://localhost:8800/",
+  "dependencies": {
+    "@babel/generator": "^7.19.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.13",
+    "@reduxjs/toolkit": "^1.8.6",
+    "@types/react": "^18.0.25",
+    "axios": "^0.27.2",
+    "components": "^0.1.0",
+    "date-fns": "^2.29.3",
+    "handlebars": "^4.7.7",
+    "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "lodash.throttle": "^4.1.1",
+    "notiflix": "^3.2.5",
+    "parcel-bundler": "^1.12.5",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-adaptive-image": "^1.9.1",
+    "react-axios": "^2.0.6",
+    "react-cookie": "^4.1.1",
+    "react-date-range": "^1.4.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
+    "react-redux": "^8.0.4",
+    "react-router": "^6.4.2",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "^5.0.1",
+    "recharts": "^2.1.16",
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "simplelightbox": "^2.10.4",
+    "tailwind-sass": "^1.0.0",
+    "throttle": "^1.0.3",
+    "web-vitals": "^2.1.3",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-react": "^7.18.6",
+    "@emotion/babel-plugin": "^11.9.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "eslint": "^8.11.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "posthtml-include": "^1.7.4",
+    "prettier": "^2.5.1",
+    "sass": "^1.55.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,css,md}": "prettier --write"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}
