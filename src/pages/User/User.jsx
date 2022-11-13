@@ -6,6 +6,8 @@ import List from '../../components/table/Table';
 import Chart from '../../components/chart/Chart';
 import useFetch from '../../hooks/useFetch.js';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const User = () => {
   const navigate = useNavigate();
@@ -24,6 +26,19 @@ const User = () => {
     navigate('/updateUser');
   };
 
+  const deleteUser = () => {
+    axios.delete(
+      `http://localhost:8800/users/${
+        JSON.parse(localStorage.getItem('user'))._id
+      }`
+    );
+
+    Notify.success('Користувача було видалено');
+    navigate('/');
+    localStorage.clear();
+    location.reload();
+  };
+
   return (
     <div className="single">
       <Header />
@@ -33,6 +48,7 @@ const User = () => {
             <div className="editButton" onClick={update}>
               Редагувати
             </div>
+
             <h1 className="title">Інформація</h1>
 
             {[data].map(item => (
@@ -59,6 +75,10 @@ const User = () => {
 
                   <button className="btnExit" onClick={exit}>
                     Вихід
+                  </button>
+
+                  <button className="btnExit" onClick={deleteUser}>
+                    Видалити
                   </button>
                 </div>
               </div>
