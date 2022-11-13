@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/VasylMolnar/TourAgency/issues"
   },
-  "homepage": "https://github.com/VasylMolnar/TourAgency#readme",
+  "homepage": "https://vasylmolnar.github.io/TourAgency/",
   "dependencies": {
     "@babel/parser": "^7.20.3",
     "@emotion/react": "^11.10.5",
