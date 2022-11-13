@@ -25,6 +25,7 @@ const useFetch = url => {
     setLoading(true);
     try {
       const res = await axios.get(`${'http://localhost:8800'}${url}`);
+      console.log(res);
       setData(res.data);
     } catch (err) {
       setError(err);

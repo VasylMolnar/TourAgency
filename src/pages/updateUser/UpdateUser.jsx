@@ -5,11 +5,13 @@ import axios from 'axios';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useNavigate } from 'react-router-dom';
 
 const New = ({ inputs }) => {
   const [file, setFile] = useState('');
   const [info, setInfo] = useState({});
   const [foto, setFoto] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = e => {
     setInfo(prev => ({ ...prev, [e.target.id]: e.target.value }));
@@ -32,15 +34,17 @@ const New = ({ inputs }) => {
           img: foto,
         };
 
-        Notify.success('Користувача було оновлено');
         await axios.put(
-          `/users/${JSON.parse(localStorage.getItem('user'))._id}`,
+          `http://localhost:8800/users/${
+            JSON.parse(localStorage.getItem('user'))._id
+          }`,
           newUser
         );
-
+        Notify.success('Користувача було оновлено');
         setTimeout(() => {
+          navigate('/user');
           window.location.reload();
-        }, 1000);
+        }, 500);
       }
     } catch (err) {
       console.log(err);
