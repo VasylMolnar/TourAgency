@@ -1,11 +1,12 @@
 import svg from '../images/SVG/icons.svg';
-import axios from 'axios';
+//import axios from 'axios';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import user from '../pages/User/User';
-import { CookiesProvider } from 'react-cookie';
+import axios from '../hooks/axios';
+const LOGIN_URL = '/auth/login';
+const SIGNUP_URL = '/auth/register';
 
 const Registration_modal = () => {
   function toggleModal() {
@@ -51,17 +52,20 @@ const Registration_modal = () => {
     dispatch({ type: 'LOGIN_START' });
 
     try {
-      const res = await axios.post(
-        'http://localhost:8800/auth/login',
-        credentials
-      );
+      const res = await axios.post(LOGIN_URL, credentials, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      });
 
-      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
+      dispatch({
+        type: 'LOGIN_SUCCESS',
+        payload: res.data.details,
+      });
+      Notify.success('Вітаємо');
 
       setTimeout(() => {
         navigate('/user');
       }, 300);
-      Notify.success('Вітаємо');
     } catch (err) {
       Notify.warning(err.message);
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
@@ -73,10 +77,10 @@ const Registration_modal = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        'http://localhost:8800/auth/register',
-        credentials
-      );
+      const res = await axios.post(SIGNUP_URL, credentials, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      });
       navigate('/');
       Notify.success('Вітаємо з реєстрацією');
     } catch (err) {
