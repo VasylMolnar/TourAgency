@@ -1,9 +1,20 @@
 import svg from '../images/SVG/icons.svg';
 import svg2 from '../images/SVG/symbol-defs.svg';
+import { useState } from 'react';
+
 const Email_modal = () => {
   function toggleModal() {
     document.querySelector('[data-modal]').classList.toggle('is-hidden');
   }
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [comment, setComment] = useState('');
+
+  const send = e => {
+    e.preventDefault();
+    console.log(setName);
+  };
 
   return (
     <div className="email__modal">
@@ -15,7 +26,12 @@ const Email_modal = () => {
             </p>
             <label className="form_item">
               <span className="form_label">Ім'я</span>
-              <input type="text" className="form-input" name="name" />
+              <input
+                type="text"
+                className="form-input"
+                name="name"
+                onChange={e => (setName = e.target.value)}
+              />
               <svg className="icon" width={12} height={12}>
                 <use href={`${svg2}#icon-name`} />
               </svg>
@@ -69,7 +85,7 @@ const Email_modal = () => {
               </span>
             </label>
             <div className="button_submit">
-              <button type="submit" className="form_button">
+              <button type="submit" className="form_button" onClick={send}>
                 Відправити
               </button>
             </div>
