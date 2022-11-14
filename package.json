@@ -20,6 +20,7 @@
   "homepage": "https://vasylmolnar.github.io/TourAgency/",
   "dependencies": {
     "@babel/parser": "^7.20.3",
+    "@emailjs/browser": "^3.9.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",

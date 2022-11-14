@@ -1,37 +1,47 @@
 import svg from '../images/SVG/icons.svg';
 import svg2 from '../images/SVG/symbol-defs.svg';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import React, { useRef } from 'react';
 
 const Email_modal = () => {
+  const form = useRef();
+
   function toggleModal() {
     document.querySelector('[data-modal]').classList.toggle('is-hidden');
   }
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [comment, setComment] = useState('');
 
-  const send = e => {
+  const sendEmail = e => {
     e.preventDefault();
-    console.log(setName);
+
+    emailjs
+      .sendForm(
+        'service_i4qne28',
+        'template_ctmdf8h',
+        form.current,
+        'ClpoIbrz3G2inAK2m'
+      )
+      .then(
+        result => {
+          console.log(result.text);
+        },
+        error => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
     <div className="email__modal">
       <div className="backdrop is-hidden" data-modal>
         <div className="modal">
-          <form className="modal_form">
+          <form ref={form} className="modal_form" onSubmit={sendEmail}>
             <p className="modal_title">
               Залиште свої дані, ми вам передзвонимо
             </p>
             <label className="form_item">
               <span className="form_label">Ім'я</span>
-              <input
-                type="text"
-                className="form-input"
-                name="name"
-                onChange={e => (setName = e.target.value)}
-              />
+              <input type="text" className="form-input" name="user_name" />
               <svg className="icon" width={12} height={12}>
                 <use href={`${svg2}#icon-name`} />
               </svg>
@@ -41,7 +51,7 @@ const Email_modal = () => {
               <input
                 type="tel"
                 className="form-input"
-                name="phone"
+                name="user_phone"
                 placeholder=" "
               />
               <svg className="icon" width={12} height={12}>
@@ -53,7 +63,7 @@ const Email_modal = () => {
               <input
                 type="email"
                 className="form-input"
-                name="mail"
+                name="user_email"
                 placeholder=" "
               />
               <svg className="icon" width={15} height={12}>
@@ -64,7 +74,7 @@ const Email_modal = () => {
               <span className="form_label">Коментар</span>
               <textarea
                 className="form_textarea"
-                name="comment"
+                name="message"
                 placeholder="Введіть текст"
                 defaultValue={''}
               />
@@ -85,7 +95,7 @@ const Email_modal = () => {
               </span>
             </label>
             <div className="button_submit">
-              <button type="submit" className="form_button" onClick={send}>
+              <button type="submit" className="form_button">
                 Відправити
               </button>
             </div>
