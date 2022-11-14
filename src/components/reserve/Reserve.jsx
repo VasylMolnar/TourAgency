@@ -47,8 +47,9 @@ const Reserve = ({ setOpen, hotelId }) => {
         ? [...selectedRooms, value]
         : selectedRooms.filter(item => item !== value)
     );
-  };
 
+    console.log(selectedRooms);
+  };
   const navigate = useNavigate();
 
   const handleClick = async () => {
@@ -72,14 +73,12 @@ const Reserve = ({ setOpen, hotelId }) => {
   return (
     <div className="reserve">
       <div className="rContainer">
-        <h1>HELLO</h1>
-
         <FontAwesomeIcon
           icon={faCircleXmark}
           className="rClose"
           onClick={() => setOpen(false)}
         />
-        <span>Select your rooms:</span>
+        <span>Виберіть кімнату:</span>
         {data.map(item => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
@@ -106,7 +105,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           </div>
         ))}
         <button onClick={handleClick} className="rButton">
-          Reserve Now----!
+          Забронюйте зараз
         </button>
       </div>
     </div>
