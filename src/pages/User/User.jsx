@@ -89,10 +89,46 @@ const User = () => {
             <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
           </div>
         </div>
+
+        <div className="bottom">
+          <h1 className="title">Кімнати</h1>
+          {[data].map(
+            item => (
+              (<>{console.log(item)} </>),
+              (
+                <div className="item">
+                  <div className="details">
+                    <div className="detailItem">
+                      <span className="itemKey">Готель:</span>
+                      <span className="itemValue">{item.hotelName}</span>
+                    </div>
+                    <div className="detailItem">
+                      <span className="itemKey">Кімнати:</span>
+                      <span className="itemValue">{item.roomNumber}</span>
+                    </div>
+                    <div className="detailItem">
+                      <span className="itemKey">Дата вїзду:</span>
+                      <span className="itemValue">{item.startDate}</span>
+                    </div>
+                    <div className="detailItem">
+                      <span className="itemKey">Дата виїзду:</span>
+                      <span className="itemValue">{item.endDate}</span>
+                    </div>
+                    <button className="btnExit" onClick={deleteUser}>
+                      Видалити
+                    </button>
+                  </div>
+                </div>
+              )
+            )
+          )}
+        </div>
+
         <div className="bottom">
           <h1 className="title">Останні транзакції</h1>
           <List />
         </div>
+
         <Footer />
       </div>
     </div>

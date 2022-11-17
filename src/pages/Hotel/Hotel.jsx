@@ -58,6 +58,7 @@ const Hotel = () => {
   const handleClick = () => {
     if (user) {
       setOpenModal(true);
+      localStorage.setItem('HotelName', data.name);
     } else {
       navigate('/');
       Notify.failure('Зареєструйтесь або увійдіть');

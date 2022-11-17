@@ -12,7 +12,7 @@ const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
-
+  const [roomNumber, setNumber] = useState();
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -42,6 +42,8 @@ const Reserve = ({ setOpen, hotelId }) => {
   const handleSelect = e => {
     const checked = e.target.checked;
     const value = e.target.value;
+    setNumber(e.target.dataset.room);
+
     setSelectedRooms(
       checked
         ? [...selectedRooms, value]
@@ -51,9 +53,8 @@ const Reserve = ({ setOpen, hotelId }) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    console.log(selectedRooms);
-    /*
     try {
+      /*
       await Promise.all(
         selectedRooms.map(roomId => {
           const res = axios.put(
@@ -64,10 +65,23 @@ const Reserve = ({ setOpen, hotelId }) => {
           );
           return res.data;
         })
+      );*/
+
+      await axios.put(
+        `http://localhost:8800/users/${
+          JSON.parse(localStorage.getItem('user'))._id
+        }`,
+        {
+          hotelName: `${localStorage.getItem('HotelName')}`,
+          roomNumber: `${roomNumber}`,
+          endDate: `${dates[0].endDate}`,
+          startDate: `${dates[0].startDate}`,
+        }
       );
+      localStorage.removeItem('HotelName');
       setOpen(false);
       navigate('/');
-    } catch (err) {}*/
+    } catch (err) {}
   };
 
   return (
@@ -96,6 +110,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                   <input
                     type="checkbox"
                     value={roomNumber._id}
+                    data-room={roomNumber.number}
                     onChange={handleSelect}
                     disabled={!isAvailable(roomNumber)}
                   />
