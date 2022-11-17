@@ -47,12 +47,12 @@ const Reserve = ({ setOpen, hotelId }) => {
         ? [...selectedRooms, value]
         : selectedRooms.filter(item => item !== value)
     );
-
-    console.log(selectedRooms);
   };
   const navigate = useNavigate();
 
   const handleClick = async () => {
+    console.log(selectedRooms);
+    /*
     try {
       await Promise.all(
         selectedRooms.map(roomId => {
@@ -67,7 +67,7 @@ const Reserve = ({ setOpen, hotelId }) => {
       );
       setOpen(false);
       navigate('/');
-    } catch (err) {}
+    } catch (err) {}*/
   };
 
   return (
