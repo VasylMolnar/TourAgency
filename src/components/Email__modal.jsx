@@ -15,12 +15,9 @@ const Email_modal = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm(
-        'service_i4qne28',
-        'template_ctmdf8h',
-        form.current,
-        'ClpoIbrz3G2inAK2m'
-      )
+      .sendForm
+      //тут ключі
+      ()
       .then(
         result => {
           console.log(result.text);
