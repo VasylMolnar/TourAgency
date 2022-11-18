@@ -26,8 +26,8 @@ const User = () => {
     navigate('/updateUser');
   };
 
-  const deleteUser = () => {
-    axios.delete(
+  const deleteUser = async () => {
+    await axios.delete(
       `http://localhost:8800/users/${
         JSON.parse(localStorage.getItem('user'))._id
       }`
@@ -37,6 +37,27 @@ const User = () => {
     navigate('/');
     localStorage.clear();
     location.reload();
+  };
+
+  const deleteRoom = async () => {
+    await axios.put(
+      `http://localhost:8800/users/${
+        JSON.parse(localStorage.getItem('user'))._id
+      }`,
+      {
+        hotelName: '',
+        roomNumber: '',
+        endDate: '',
+        startDate: '',
+      }
+    );
+    localStorage.removeItem('HotelName');
+    Notify.success('Користувача було оновлено');
+
+    setInterval(() => {
+      navigate('/');
+      location.reload();
+    }, 500);
   };
 
   return (
@@ -92,36 +113,31 @@ const User = () => {
 
         <div className="bottom">
           <h1 className="title">Кімнати</h1>
-          {[data].map(
-            item => (
-              (<>{console.log(item)} </>),
-              (
-                <div className="item">
-                  <div className="details">
-                    <div className="detailItem">
-                      <span className="itemKey">Готель:</span>
-                      <span className="itemValue">{item.hotelName}</span>
-                    </div>
-                    <div className="detailItem">
-                      <span className="itemKey">Кімнати:</span>
-                      <span className="itemValue">{item.roomNumber}</span>
-                    </div>
-                    <div className="detailItem">
-                      <span className="itemKey">Дата вїзду:</span>
-                      <span className="itemValue">{item.startDate}</span>
-                    </div>
-                    <div className="detailItem">
-                      <span className="itemKey">Дата виїзду:</span>
-                      <span className="itemValue">{item.endDate}</span>
-                    </div>
-                    <button className="btnExit" onClick={deleteUser}>
-                      Видалити
-                    </button>
-                  </div>
+          {[data].map(item => (
+            <div className="item">
+              <div className="det">
+                <div className="detailItem">
+                  <span className="itemKey">Готель:</span>
+                  <span className="itemValue">{item.hotelName}</span>
                 </div>
-              )
-            )
-          )}
+                <div className="detailItem">
+                  <span className="itemKey">Кімнати:</span>
+                  <span className="itemValue">{item.roomNumber}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Дата вїзду:</span>
+                  <span className="itemValue">{item.startDate}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Дата виїзду:</span>
+                  <span className="itemValue">{item.endDate}</span>
+                </div>
+                <button className="btnExit" onClick={deleteRoom}>
+                  Видалити
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="bottom">

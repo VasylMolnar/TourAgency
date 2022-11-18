@@ -94,4 +94,17 @@
       border: 1px solid black;
     }
   }
+
+  .det {
+    display: flex;
+
+    .itemValue {
+      display: flex;
+    }
+
+    .detailItem {
+      max-width: 250px;
+      margin: 5px 60px;
+    }
+  }
 }

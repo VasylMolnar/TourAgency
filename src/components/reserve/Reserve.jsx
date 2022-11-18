@@ -54,7 +54,6 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const handleClick = async () => {
     try {
-      /*
       await Promise.all(
         selectedRooms.map(roomId => {
           const res = axios.put(
@@ -65,7 +64,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           );
           return res.data;
         })
-      );*/
+      );
 
       await axios.put(
         `http://localhost:8800/users/${
