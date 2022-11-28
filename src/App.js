@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
+        <Switch>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/hotels" element={<Hotels />} />
@@ -21,7 +21,8 @@ function App() {
             path="/updateUser"
             element={<UpdateUser inputs={userInputs} />}
           />
-        </Routes>
+        <Redirect to='/'/>
+        </Switch>
       </BrowserRouter>
     </>
   );
